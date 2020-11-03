@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 15vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background: #0973BB;
+  min-height: 18vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-family: roboto;
+}
+
+.App-body {
+  background: #000;
+}
+
+.Inputs {
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  font-family: roboto;
+}
+
+.Forms {
+  justify-content: center;
+  font-family: roboto;
+  margin-top: 15px;
+}
+
+.Titulos {
+  font-family: roboto;
+  text-align: center;
+}
+
+
+
+
