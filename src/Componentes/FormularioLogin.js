@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Registro from '../Registro';
-
+import './Modales';
+import '../Registro';
 
 class LoginForm extends Component{
 
@@ -17,7 +17,7 @@ class LoginForm extends Component{
               <div className="form-group">
                 <input type="email" className="form-control form-control-lg Inputs" placeholder="Correo electrónico"/>
                 <input type="password" className="form-control form-control-lg Inputs" placeholder="Contraseña"/>
-                <div className="form-group btn-group-vertical displayCSS">
+                <div className="form-group btn-group-vertical displayCSS">     
                   <input type="submit" className="btn Buttons ButtonsFormat" value="Aceptar"/>
                   <input type="button" className="btn Buttons ButtonsFormat" value="No estoy registrado"/>
                 </div>
