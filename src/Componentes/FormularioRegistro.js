@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { Component } from 'react';
 
+
 class RegistroLogin extends Component {
     render() { 
         return (          
@@ -20,7 +21,11 @@ class RegistroLogin extends Component {
                 <option value="1">Informática empresarial</option>
                 <option value="2">Recurso hídrico</option>
                 <option value="3">Enseñanza de la matemática</option>
-                <option value="4">Funcionario</option>
+                <option value="4">Turismo ecologico</option>
+                <option value="5">Trabajo social</option>
+                <option value="6">Laboratorista quimico</option>
+                <option value="7">Enseñanza de las ciencias naturales</option>
+                <option value="8">Funcionario UCR</option>
                 </select>
                 <select className="custom-select buttonList" id="inputGenero">
                 <option selected>Seleccione su género</option>

@@ -3,7 +3,6 @@ import '../App.css';
 import Registro from '../Registro';
 
 
-
 class LoginForm extends Component{
 
     render(){
