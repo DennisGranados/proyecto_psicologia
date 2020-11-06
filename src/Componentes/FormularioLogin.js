@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
-import './FormularioRegistro';
+import Registro from '../Registro';
 
 
 
 class LoginForm extends Component{
+
     render(){
     return (
       <div className="Forms row">
@@ -20,8 +21,6 @@ class LoginForm extends Component{
                 <div className="form-group btn-group-vertical displayCSS">
                   <input type="submit" className="btn Buttons ButtonsFormat" value="Aceptar"/>
                   <input type="button" className="btn Buttons ButtonsFormat" value="No estoy registrado"/>
-                  <a href= "https://facebook.com"> Click aquí</a>
-                  <a href= "/FormularioRegistro"> test</a>
                 </div>
               </div>
             </div>

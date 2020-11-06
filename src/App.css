@@ -56,9 +56,14 @@
   display: flex;
 }
 
-.prueba {
-  display: flex;
+.buttonList {
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: roboto;
 }
+
+
+
 
 
 

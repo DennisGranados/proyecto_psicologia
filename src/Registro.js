@@ -9,6 +9,7 @@ class RegistroForm extends Component {
         return (
             <div>
                 <Encabezado/>
+                <FormularioRegistro/>
             </div>
         )
     }
