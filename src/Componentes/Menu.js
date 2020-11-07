@@ -6,12 +6,13 @@ class MenuPrincipal extends Component {
         return ( 
             <div>
                 <div className="btn-group-vertical">
-                    <button type="button" className="btn btn-lg btn-primary" disabled>Nombre de usuario - Carné</button>
-                    <button type="button" className="btn btn-lg btn-primary">Buscar cita</button>
-                    <button type="button" className="btn btn-lg btn-primary">Asignar cita</button>
-                    <button type="button" className="btn btn-lg btn-primary">Eliminar cita</button>
-                    <button type="button" className="btn btn-lg btn-primary">Reprogramar cita</button>
-                    <button type="button" className="btn btn-lg btn-primary">Mostrar cita</button>
+                    <button type="button" className="btn btn-lg btnMenu" disabled>Nombre de usuario - Carné</button>
+                    <button type="button" className="btn btn-lg btnMenu">Buscar cita</button>
+                    <button type="button" className="btn btn-lg btnMenu">Asignar cita</button>
+                    <button type="button" className="btn btn-lg btnMenu">Eliminar cita</button>
+                    <button type="button" className="btn btn-lg btnMenu">Reprogramar cita</button>
+                    <button type="button" className="btn btn-lg btnMenu">Mostrar cita</button>
+                    <button type="button" className="btn btn-lg btnMenu">Salir</button>
                 </div>
             </div>
         );
