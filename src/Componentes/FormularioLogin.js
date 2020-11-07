@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
 import './Modales';
-import '../Registro';
+import Encabezado from './Encabezado';
+import Footer from './Footer';
 
 class LoginForm extends Component{
 
     render(){
     return (
+      <div>
       <div className="Forms row">
         <div className="card col-4 Forms">
       <form>
@@ -19,12 +21,13 @@ class LoginForm extends Component{
                 <input type="password" className="form-control form-control-lg Inputs" placeholder="Contraseña"/>
                 <div className="form-group btn-group-vertical displayCSS">     
                   <input type="submit" className="btn Buttons ButtonsFormat" value="Aceptar"/>
-                  <input type="button" className="btn Buttons ButtonsFormat" value="No estoy registrado"/>
                 </div>
               </div>
             </div>
       </form>
         </div>
+      </div>
+        <Footer/>
       </div>
     );
   }

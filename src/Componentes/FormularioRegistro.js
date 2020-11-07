@@ -1,10 +1,12 @@
 import '../App.css';
 import React, { Component } from 'react';
-
+import Encabezado from './Encabezado';
+import Footer from './Footer';
 
 class RegistroLogin extends Component {
     render() { 
-        return (          
+        return (   
+            <div> 
       <div className="Forms row">
       <div className="card col-4 Forms">
         <form>
@@ -41,6 +43,8 @@ class RegistroLogin extends Component {
         </form>
       </div>
     </div>
+        <Footer/>
+    </div>      
         );
     }
 }

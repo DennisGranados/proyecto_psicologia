@@ -14,7 +14,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: black;
+  font-family: roboto;
+}
+
+.App-footer {
+  background: #0973BB;
+  min-height: 18vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
   font-family: roboto;
 }
 
@@ -27,6 +38,7 @@
   margin-bottom: 10px;
   text-align: center;
   font-family: roboto;
+  font-size: 20px;
 }
 
 .Forms {
@@ -61,6 +73,36 @@
   text-align: center;
   font-family: roboto;
 }
+
+.navFonts {
+  font-family: roboto;
+  color: black;
+}
+
+.fonts {
+  font-family: roboto;
+  color: black;
+  font-size: 24px;
+  text-align: center;
+}
+
+.backgrounds {
+  background: #0973BB;
+}
+
+.footer {
+  margin-top: 4%;
+}
+
+.about {
+  margin-top: 2%;
+}
+
+.cc {
+  justify-content: center;
+}
+
+
 
 
 
