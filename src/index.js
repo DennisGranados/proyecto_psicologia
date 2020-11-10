@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import PruebaInterfaz from './PruebaInterfaz';
+import VentanaUsuario from './VentanaUsuario';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

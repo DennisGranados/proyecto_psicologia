@@ -1,36 +1,50 @@
-import React, { Component } from 'react';
-import '../App.css';
-import './Modales';
-import Encabezado from './Encabezado';
-import Footer from './Footer';
+import React, { Component } from "react";
+import "../App.css";
+import "./Modales";
+import Footer from "./Footer";
+import Modales from "./Modales";
 
-class LoginForm extends Component{
-
-    render(){
+class LoginForm extends Component {
+  render() {
     return (
       <div>
-      <div className="Forms row">
-        <div className="card col-4 Forms">
-      <form>
-          <div className="card-header">
-            <h2 className="Titulos">Inicio de sesión</h2>
-          </div>
-            <div className="Forms card-body">
-              <div className="form-group">
-                <input type="email" className="form-control form-control-lg Inputs" placeholder="Correo electrónico"/>
-                <input type="password" className="form-control form-control-lg Inputs" placeholder="Contraseña"/>
-                <div className="form-group btn-group-vertical displayCSS">     
-                  <input type="submit" className="btn Buttons ButtonsFormat" value="Aceptar"/>
+        <Modales />
+        <div className="Forms row">
+          <div className="card col-4 Forms">
+            <form>
+              <div className="card-header">
+                <h2 className="Titulos">Inicio de sesión</h2>
+              </div>
+              <div className="Forms card-body">
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className="form-control form-control-lg Inputs"
+                    placeholder="Correo electrónico"
+                  />
+                  <input
+                    type="password"
+                    className="form-control form-control-lg Inputs"
+                    placeholder="Contraseña"
+                  />
+                  <div className="form-group btn-group-vertical displayCSS">
+                    <input
+                      type="button"
+                      className="btn Buttons ButtonsFormat"
+                      value="Aceptar"
+                      data-toggle="modal" 
+                      data-target="#exampleModal"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-      </form>
+            </form>
+          </div>
         </div>
-      </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
-  }
-  
-  export default LoginForm;
+}
+
+export default LoginForm;

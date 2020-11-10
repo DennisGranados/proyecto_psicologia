@@ -7,10 +7,7 @@ class PlantillaMenu extends Component {
             <div>
                 <div className='about'>
                     <div className='row'>
-                        <div id='menuIzquierdo' className='col-3 tc'>
-                            <MenuPrincipal/>
-                        </div>
-                        <div id='menuDerecho' className='col-8 tc bg'>
+                        <div className='col-10 tc bg'>
                             <div >
                               
                             </div>

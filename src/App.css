@@ -1,27 +1,37 @@
+@font-face {
+  font-family: 'Liberation Sans';
+  src: url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/LiberationSans-Regular-webfont.eot');
+  src: url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/LiberationSans-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/LiberationSans-Regular-webfont.woff') format('woff'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/LiberationSans-Regular-webfont.ttf') format('truetype'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/LiberationSans-Regular-webfont.svg#liberation_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 15vmin;
+  height: 10vmin;
   pointer-events: none;
 }
+
 
 .App-header {
   background: #457fca;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  min-height: 18vh;
+  min-height: 14vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 0px 20px;
   color: black;
-  font-family: roboto;
+  font-family: 'Liberation Sans';
 }
 
 .App-footer {
-  background: #0973BB;
+  background: #457fca;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca);
   min-height: 18vh;
   display: flex;
   flex-direction: column;
@@ -33,6 +43,7 @@
 
 .App-body {
   background: #000;
+  font-family: 'Liberation Sans';
 }
 
 .Inputs {
@@ -55,7 +66,7 @@
 }
 
 .Buttons {
-  background-color: #3AD4FF;
+  background-color: #114E8F;
   color: #ffffff;
   text-align: center;
   font-size: 16px;
@@ -104,6 +115,11 @@
   margin-top: 2%;
 }
 
+.margins{
+  margin-bottom: 2%;
+  margin-top: 10px;
+}
+
 .cc {
   justify-content: center;
 }
@@ -118,6 +134,28 @@
   background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
+.calendar-day, .calendar-title, .calendar-nonDay{
+  display: inline-flex;
+  border: 1px solid black;
+  padding: 10px 0px;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 13.4%;
+  min-height: 40px;
+}
+
+.calendar-nonDay{
+  border: 1px solid grey;
+  background-color: grey;
+}
+
+.headerModal {
+  font-family: roboto;
+  font-weight: bold;
+  text-align: center;
+  background: #1787B3;
+}
 
 
 
