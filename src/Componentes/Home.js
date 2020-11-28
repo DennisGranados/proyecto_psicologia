@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Encabezado from './Encabezado';
+import Header from './Header';
 import Footer from './Footer';
-import MenuPrincipal from './Menu';
 
-class Inicio extends Component {
+class Home extends Component {
     render() { 
         return ( 
             <div>
@@ -29,4 +28,4 @@ class Inicio extends Component {
     }
 }
  
-export default Inicio;
+export default Home;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 
-class Encabezado extends Component {
+class Header extends Component {
     render() { 
         return (
                 <div className="App-header row">
@@ -19,4 +19,4 @@ class Encabezado extends Component {
     }
 }
  
-export default Encabezado;
+export default Header;

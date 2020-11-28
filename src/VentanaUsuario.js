@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Day from './Componentes/Dia';
+import Day from './Componentes/Day';
 import ColumnBreak from './Componentes/ColumnBreak';
 import Calendar from 'calendar';
 import ColumnTitle from './Componentes/ColumnTitle';
@@ -8,7 +8,7 @@ import FlechaAtras from './Componentes/FlechaAtras';
 import FlechaSiguiente from './Componentes/FlechaSiguiente';
 import NavegadorMenu from './Componentes/NavCalendario';
 import NavLogout from './Componentes/NavLogout';
-import Encabezado from './Componentes/Encabezado';
+import Header from './Componentes/Header';
     
 class VentanaUsuario extends Component {
         constructor(props){
@@ -62,7 +62,7 @@ class VentanaUsuario extends Component {
     
             return ( 
                 <div>
-                    <Encabezado/>
+                    <Header/>
                     <NavLogout/>
                     <div className='row'>
                         <div className='col-1 d-flex align-items-center justify-content-end'>

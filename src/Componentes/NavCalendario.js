@@ -10,14 +10,14 @@ class NavegadorMenu extends Component {
             </div>
             <select className="custom-select" id="action-type" aria-label="Seleccionar el tipo de acción">
                 <option value="any" selected>Escoger</option>
-                <option value="Dennis la mama">Dennis la mama</option>
+                <option value=""></option>
             </select>
             <div className="input-group-prepend">
                 <span className="input-group-text">Solicitante:</span>
             </div>
             <select className="custom-select" id="objective-type" aria-label="Seleccionar el tipo de objetivo">
                 <option value="any" selected>Todos</option>
-                <option value="Dennis la mama">Denilson Granados</option>
+                <option value="">Denilson Granados</option>
             </select>
             <div className="input-group-prepend">
                 <label for="audit_startTime" className="input-group-text">Mes/Año:</label>
