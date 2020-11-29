@@ -51,7 +51,7 @@ class LoginForm extends Component {
               UserProfile.setName(u.name);
               UserProfile.setEmail(user.user.email);
               UserProfile.setStatus("A");
-              context.props.user(UserProfile.getUser());
+              context.props.onChangeUser(UserProfile.getUser());
               window.location.href = "/schedule";
             } else {
               firebase
@@ -67,9 +67,13 @@ class LoginForm extends Component {
                     UserProfile.setIdStudent(u.idStudent);
                     UserProfile.setEmail(user.user.email);
                     UserProfile.setStatus("B");
-                    context.props.user(UserProfile.getUser());
+                    context.props.onChangeUser(UserProfile.getUser());
                     window.location.href = "/schedule";
                   } else {
+                    context.showMessage(
+                      "Ingreso exitoso",
+                      "Ha ingresado de forma exitosa  "
+                    );
                   }
                 });
             }
@@ -82,8 +86,6 @@ class LoginForm extends Component {
         );
         var errorCode = error.code;
         var errorMessage = error.message;
-        //console.log(errorCode);
-        //console.log(errorMessage);
       });
   }
 

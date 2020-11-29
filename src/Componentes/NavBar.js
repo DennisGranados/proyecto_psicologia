@@ -5,46 +5,14 @@ import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./Header";
 import NavLink from "./NavLink";
-import UserProfile from "./User";
 import Schedule from "./Schedule";
-import firebase from "firebase/app";
-import "firebase/auth";
 
 class Navegator extends Component {
-  constructor() {
-    super();
-    this.state = { user: UserProfile.getUser() };
-    this.setUser = this.setUser.bind(this);
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        this.setState({ user: UserProfile.getUser() });
-      } else {
-        // No user is signed in.
-      }
-    });
-  }
-
-  setUser(user) {
-    this.setState({ user: user });
-  }
-
   render() {
-    console.log(this.state.user);
-    /* if (this.state.user === null) {
-      if (UserProfile.getSessionId() !== null) {
-        if (this.state.user.id !== UserProfile.getSessionId()) {
-          this.setState({ user: UserProfile.getUser() });
-        }
-      }
-    } else {
-      if (this.state.user.id !== UserProfile.getSessionId()) {
-        this.setState({ user: UserProfile.getUser() });
-      }
-    }*/
     return (
-      <Router>
-        <div>
-          <Header />
+      <div>
+        <Header />
+        <Router>
           <nav
             id="nav-principal"
             className="navbar navbar-expand-lg navbar-light bg-light"
@@ -62,7 +30,7 @@ class Navegator extends Component {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <NavLink user={this.state.user} />
+              <NavLink user={this.props.user} />
             </div>
           </nav>
           <Switch>
@@ -70,7 +38,7 @@ class Navegator extends Component {
               <Home />
             </Route>
             <Route exact path="/login">
-              <FormularioLogin user={this.setUser} />
+              <FormularioLogin onChangeUser={this.onChangeUser} />
             </Route>
             <Route exact path="/registro">
               <FormularioRegistro />
@@ -79,8 +47,8 @@ class Navegator extends Component {
               <Schedule />
             </Route>
           </Switch>
-        </div>
-      </Router>
+        </Router>
+      </div>
     );
   }
 }

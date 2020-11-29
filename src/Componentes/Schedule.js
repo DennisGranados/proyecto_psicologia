@@ -14,10 +14,37 @@ import "firebase/auth";
 class Calendario extends Component {
   constructor(props) {
     super(props);
+
+    let month = new Date().getMonth();
+    let year = new Date().getFullYear();
+    let days = [];
+    let cal = new Calendar.Calendar(1);
+    let m = cal.monthDays(year, month);
+    let nameDays = [
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado",
+      "Domingo",
+    ];
+    days = days.concat(
+      nameDays.map((title) => <ColumnTitle title={title} />)
+    );
+    days.push(<ColumnBreak />);
+    for (let i = 0; i < m.length; i++) {
+      let daysTemp = m[i].map((day) =>
+        day !== 0 ? <Day day={day} /> : <NonDay />
+      );
+      daysTemp.push(<ColumnBreak />);
+      days = days.concat(daysTemp);
+    }
+
     this.state = {
-      year: new Date().getFullYear(),
-      month: new Date().getMonth(),
-      days: [],
+      year: year,
+      month: month,
+      days: days
     };
     this.BackMonth = this.BackMonth.bind(this);
     this.ForwardMonth = this.ForwardMonth.bind(this);
@@ -51,35 +78,10 @@ class Calendario extends Component {
   }
 
   render() {
-    console.log(UserProfile.getUser());
-    console.log(firebase.auth().currentUser);
-    let cal = new Calendar.Calendar(1);
-    let m = cal.monthDays(this.state.year, this.state.month);
-    let nameDays = [
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado",
-      "Domingo",
-    ];
-    this.state.days = this.state.days.concat(
-      nameDays.map((title) => <ColumnTitle title={title} />)
-    );
-    this.state.days.push(<ColumnBreak />);
-    for (let i = 0; i < m.length; i++) {
-      let daysTemp = m[i].map((day) =>
-        day !== 0 ? <Day day={day} /> : <NonDay />
-      );
-      daysTemp.push(<ColumnBreak />);
-      this.state.days = this.state.days.concat(daysTemp);
-    }
-
     return (
       <div>
         <NavegadorMenu />
-        <div className="row">
+        <div className="row calendar">
           <div className="col-1 d-flex align-items-center justify-content-end">
             <FlechaAtras onClick={this.BackMonth} />
           </div>
