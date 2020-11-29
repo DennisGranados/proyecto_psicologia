@@ -138,6 +138,18 @@
 
 .calendar {
   margin-top: 10px;
+  text-align: center;
+}
+
+.calendar-month {
+  border-radius: 5px 5px 0 0;
+  background-color: #114E8F;
+  text-align: center;
+  padding: 10px 0;
+  font-family: 'TruenoSBd';
+  font-size: 1.2em;
+  color: white;
+  width: 78.4%;
 }
 
 .calendar-day, .calendar-title, .calendar-nonDay {
@@ -177,6 +189,30 @@
 
 .w-nav {
   width: 100%;
+}
+
+.back-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 500ms;
+}
+
+.back-arrow:hover {
+  transform: scale(1.2) translateX(30px);
+  transition-duration: 500ms;
+}
+
+.forward-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 500ms;
+}
+
+.forward-arrow:hover {
+  transform: scale(1.2) translateX(-30px);
+  transition-duration: 500ms;
 }
 
 

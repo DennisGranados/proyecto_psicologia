@@ -2,13 +2,87 @@ import React, { Component } from "react";
 import FormularioLogin from "./FormularioLogin";
 import FormularioRegistro from "./FormularioRegistro";
 import Home from "./Home";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useLocation
+} from "react-router-dom";
 import Header from "./Header";
 import NavLink from "./NavLink";
 import Schedule from "./Schedule";
+import UserProfile from "./User";
 
 class Navegator extends Component {
   render() {
+    function verifyAdmin(user) {
+      if (user === null) {
+        return false;
+      } else {
+        if ("A" === user.status) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+
+    function verifyApplicant(user) {
+      if (user === null) {
+        return false;
+      } else {
+        if ("B" === user.status || "A" === user.status) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+
+    function ConditionalRedirect(user, location) {
+      if (user !== null) {
+        <Redirect
+          to={{
+            pathname: "/home",
+            state: { from: location },
+          }}
+        />;
+      } else {
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: location },
+          }}
+        />;
+      }
+    }
+
+    function ApplicantRoute({ children, ...rest }) {
+      var user = UserProfile.getUser();
+      return (
+        <Route
+          {...rest}
+          render={({ location }) =>
+            verifyApplicant(user) ? children : ConditionalRedirect(user, location)
+          }
+        />
+      );
+    }
+
+    function AdminRoute({ children, ...rest }) {
+      var user = UserProfile.getUser();
+      return (
+        <Route
+          {...rest}
+          render={({ location }) =>
+            verifyAdmin(user) ? children : ConditionalRedirect(user, location)
+          }
+        />
+      );
+    }
+
     return (
       <div>
         <Header />
@@ -43,9 +117,9 @@ class Navegator extends Component {
             <Route exact path="/registro">
               <FormularioRegistro />
             </Route>
-            <Route exact path="/schedule">
+            <AdminRoute exact path="/schedule">
               <Schedule />
-            </Route>
+            </AdminRoute>
           </Switch>
         </Router>
       </div>
