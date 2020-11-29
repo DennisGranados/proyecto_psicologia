@@ -8,7 +8,7 @@ import {
   Route,
   Link,
   Redirect,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import Header from "./Header";
 import NavLink from "./NavLink";
@@ -43,19 +43,23 @@ class Navegator extends Component {
 
     function ConditionalRedirect(user, location) {
       if (user !== null) {
-        <Redirect
-          to={{
-            pathname: "/home",
-            state: { from: location },
-          }}
-        />;
+        return (
+          <Redirect
+            to={{
+              pathname: "/schedule",
+              state: { from: location },
+            }}
+          />
+        );
       } else {
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: location },
-          }}
-        />;
+        return (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        );
       }
     }
 
@@ -65,7 +69,9 @@ class Navegator extends Component {
         <Route
           {...rest}
           render={({ location }) =>
-            verifyApplicant(user) ? children : ConditionalRedirect(user, location)
+            verifyApplicant(user)
+              ? children
+              : ConditionalRedirect(user, location)
           }
         />
       );
@@ -104,7 +110,11 @@ class Navegator extends Component {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <NavLink user={this.props.user} />
+              <NavLink
+                user={this.props.user}
+                //onChangeUser={this.props.onChangeUser}
+                onLogout={this.props.onLogout}
+              />
             </div>
           </nav>
           <Switch>
@@ -112,14 +122,14 @@ class Navegator extends Component {
               <Home />
             </Route>
             <Route exact path="/login">
-              <FormularioLogin onChangeUser={this.onChangeUser} />
+              <FormularioLogin />
             </Route>
             <Route exact path="/registro">
               <FormularioRegistro />
             </Route>
-            <AdminRoute exact path="/schedule">
+            <ApplicantRoute exact path="/schedule">
               <Schedule />
-            </AdminRoute>
+            </ApplicantRoute>
           </Switch>
         </Router>
       </div>

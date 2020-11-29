@@ -8,6 +8,10 @@ var UserProfile = (function () {
     document.cookie = name + "=" + (value || "") + "; path=/";
   };
 
+  var deleteCookie = (name) => {
+    document.cookie = name + "=" + "" + "; path=/";
+  };
+
   let getCookie = (name) => {
     if (firebase.auth().currentUser !== null) {
       let nameEQ = name + "=";
@@ -36,19 +40,38 @@ var UserProfile = (function () {
   };
 
   var getUser = function () {
-    if (firebase.auth().currentUser !== null) {
-      return {
-        name: getName(),
-        career: getCareer(),
-        idStudent: getIdStudent(),
-        email: getEmail(),
-        status: getStatus(),
-        id: getSessionId(),
-      };
-    } else {
-      return null;
-    }
+    let checkLoginStatusReactSide = async () => {
+      try {
+        let user = await UserProfile.checkAuthStatus();
+        console.log(user);
+        if (user !== null) {
+          return {
+            name: getName(),
+            career: getCareer(),
+            idStudent: getIdStudent(),
+            email: getEmail(),
+            status: getStatus(),
+            id: getSessionId(),
+          };
+        } else {
+          return null;
+        }
+      } catch (err) {
+        return null;
+      }
+    };
+    return checkLoginStatusReactSide();
   };
+
+  function checkAuthStatus() {
+    return new Promise((resolve, reject) => {
+      try {
+        firebase.auth().onAuthStateChanged((user) => resolve(user));
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
 
   var setStatus = function (id) {
     setCookie("status", id);
@@ -59,11 +82,12 @@ var UserProfile = (function () {
   };
 
   var deleteUser = function () {
-    setCareer("");
-    setEmail("");
-    setIdStudent("");
-    setName("");
-    setStatus("");
+    deleteCookie("email");
+    deleteCookie("idStudent");
+    deleteCookie("name");
+    deleteCookie("status");
+    deleteCookie("career");
+    deleteCookie("id");
   };
 
   var getName = function () {
@@ -113,6 +137,8 @@ var UserProfile = (function () {
     getStatus: getStatus,
     generateSessionId: generateSessionId,
     getSessionId: getSessionId,
+    deleteUser: deleteUser,
+    checkAuthStatus: checkAuthStatus,
   };
 })();
 

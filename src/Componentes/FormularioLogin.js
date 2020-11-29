@@ -5,6 +5,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import ModalReact from "./ModalMessage";
 import UserProfile from "./User";
+import { Redirect } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor() {
@@ -34,56 +35,69 @@ class LoginForm extends Component {
   referenceContext(context) {
     firebase
       .auth()
-      .signInWithEmailAndPassword(context.state.email, context.state.password)
-      .then(function (user) {
-        context.showMessage(
-          "Ingreso exitoso",
-          "Ha ingresado de forma exitosa  "
-        );
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(function () {
         firebase
-          .database()
-          .ref("/users/admin/" + user.user.uid)
-          .once("value")
-          .then(function (snapshot) {
-            if (snapshot.exists()) {
-              var u = snapshot.val();
-              UserProfile.generateSessionId();
-              UserProfile.setName(u.name);
-              UserProfile.setEmail(user.user.email);
-              UserProfile.setStatus("A");
-              context.props.onChangeUser(UserProfile.getUser());
-              window.location.href = "/schedule";
-            } else {
-              firebase
-                .database()
-                .ref("/users/applicant/" + user.user.uid)
-                .once("value")
-                .then(function (snapshot) {
-                  if (snapshot.exists()) {
-                    var u = snapshot.val();
-                    UserProfile.generateSessionId();
-                    UserProfile.setName(u.name);
-                    UserProfile.setCareer(u.career);
-                    UserProfile.setIdStudent(u.idStudent);
-                    UserProfile.setEmail(user.user.email);
-                    UserProfile.setStatus("B");
-                    context.props.onChangeUser(UserProfile.getUser());
-                    window.location.href = "/schedule";
-                  } else {
-                    context.showMessage(
-                      "Ingreso exitoso",
-                      "Ha ingresado de forma exitosa  "
-                    );
-                  }
-                });
-            }
+          .auth()
+          .signInWithEmailAndPassword(
+            context.state.email,
+            context.state.password
+          )
+          .then(function (user) {
+            context.showMessage(
+              "Ingreso exitoso",
+              "Ha ingresado de forma exitosa  "
+            );
+            firebase
+              .database()
+              .ref("/users/admin/" + user.user.uid)
+              .once("value")
+              .then(function (snapshot) {
+                if (snapshot.exists()) {
+                  var u = snapshot.val();
+                  UserProfile.generateSessionId();
+                  UserProfile.setName(u.name);
+                  UserProfile.setEmail(user.user.email);
+                  UserProfile.setStatus("A");
+                 // context.props.onChangeUser(UserProfile.getUser());
+                  window.location.href = "/schedule";
+                } else {
+                  firebase
+                    .database()
+                    .ref("/users/applicant/" + user.user.uid)
+                    .once("value")
+                    .then(function (snapshot) {
+                      if (snapshot.exists()) {
+                        var u = snapshot.val();
+                        UserProfile.generateSessionId();
+                        UserProfile.setName(u.name);
+                        UserProfile.setCareer(u.career);
+                        UserProfile.setIdStudent(u.idStudent);
+                        UserProfile.setEmail(user.user.email);
+                        UserProfile.setStatus("B");
+                      //  context.props.onChangeUser(UserProfile.getUser());
+                        window.location.href = "/schedule";
+                      } else {
+                        context.showMessage(
+                          "Ingreso exitoso",
+                          "Ha ingresado de forma exitosa  "
+                        );
+                      }
+                    });
+                }
+              });
+          })
+          .catch(function (error) {
+            context.showMessage(
+              "Ingreso fallido",
+              "Ha ingresado datos incorrectos o un usuario inexistente"
+            );
+            var errorCode = error.code;
+            var errorMessage = error.message;
           });
       })
       .catch(function (error) {
-        context.showMessage(
-          "Ingreso fallido",
-          "Ha ingresado datos incorrectos o un usuario inexistente"
-        );
+        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
       });

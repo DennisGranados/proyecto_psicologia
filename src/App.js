@@ -9,25 +9,45 @@ class App extends Component {
   constructor() {
     super();
     this.state = { user: UserProfile.getUser() };
-    this.onChangeUser = this.onChangeUser.bind(this);
+    // this.onChangeUser = this.onChangeUser.bind(this);
+    this.onLogout = this.onLogout.bind(this);
     let context = this;
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        context.setState({ user: UserProfile.getUser() });
-      } else {
-        // No user is signed in.
+
+    let checkLoginStatusReactSide = async () => {
+      try {
+        let user = await UserProfile.checkAuthStatus();
+        if (user !== null) {
+          context.setState({ user: UserProfile.getUser() });
+        } else {
+          UserProfile.deleteUser();
+        }
+      } catch (err) {
+        UserProfile.deleteUser();
+        console.log("catch | error: ", err);
       }
-    });
+    };
+    checkLoginStatusReactSide();
   }
 
-  onChangeUser(user) {
-    this.setState({ user: user });
+  onLogout() {
+    firebase.auth().signOut();
+    UserProfile.deleteUser();
+    this.setState({ user: null });
+    window.location.href = "/login";
   }
+
+  /*onChangeUser(user) {
+    this.setState({ user: user });
+  }*/
 
   render() {
     return (
       <div className="container-fluid">
-        <Navegator user={this.state.user} onChangeUser={this.setUser}/>
+        <Navegator
+          user={this.state.user}
+          // onChangeUser={this.onChangeUser}
+          onLogout={this.onLogout}
+        />
       </div>
     );
   }

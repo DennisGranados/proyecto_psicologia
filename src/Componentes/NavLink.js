@@ -10,8 +10,9 @@ class NavLink extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     let nav;
-    if (this.props.user === null || this.props.user === undefined) {
+    if (this.props.user === null) {
       nav = (
         <ul className="navbar-nav">
           <li>
@@ -37,7 +38,7 @@ class NavLink extends Component {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link to="/schedule"className="nav-link" href="#">
+                <Link to="/schedule" className="nav-link" href="#">
                   Calendario <span className="sr-only">(current)</span>
                 </Link>
               </li>
@@ -54,7 +55,11 @@ class NavLink extends Component {
               placeholder={this.props.user.name}
               disabled
             />
-            <button className="btn btn Buttons my-2 my-sm-0" type="button">
+            <button
+              className="btn btn Buttons my-2 my-sm-0"
+              type="button"
+              onClick={this.props.onLogout}
+            >
               Desconectarse
             </button>
           </div>
@@ -66,7 +71,7 @@ class NavLink extends Component {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link to="/schedule"className="nav-link" href="#">
+                <Link to="/schedule" className="nav-link" href="#">
                   Calendario <span className="sr-only">(current)</span>
                 </Link>
               </li>
@@ -83,7 +88,11 @@ class NavLink extends Component {
               placeholder={this.props.user.name}
               disabled
             />
-            <button className="btn btn Buttons my-2 my-sm-0" type="button">
+            <button
+              className="btn btn Buttons my-2 my-sm-0"
+              type="button"
+              onClick={this.props.onLogout}
+            >
               Desconectarse
             </button>
           </div>
