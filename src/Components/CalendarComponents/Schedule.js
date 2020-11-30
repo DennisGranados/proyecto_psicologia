@@ -9,6 +9,8 @@ import ForwardArrow from "./ForwardArrow";
 import NavCalendar from "./NavCalendar";
 import firebase from "firebase/app";
 import "firebase/auth";
+import Modal from "../Modals/ModalMessage";
+import AddModal from "../Modals/ModalAddAppointment";
 
 class Calendario extends Component {
   constructor(props) {
@@ -31,9 +33,14 @@ class Calendario extends Component {
         "Noviembre",
         "Diciembre",
       ],
+      addMessageOpen: false,
+      forms: null,
     };
     this.BackMonth = this.BackMonth.bind(this);
     this.ForwardMonth = this.ForwardMonth.bind(this);
+    this.disposeAddAppointment = this.disposeAddAppointment.bind(this);
+    this.showAddAppointment = this.showAddAppointment.bind(this);
+    this.AddAppointment = this.AddAppointment.bind(this);
   }
 
   BackMonth() {
@@ -62,6 +69,21 @@ class Calendario extends Component {
     }
   }
 
+  disposeAddAppointment() {
+    this.setState({ addMessageOpen: false });
+  }
+
+  showAddAppointment(date) {
+    let form = this.state.forms.formCreateAppointment;
+    form.dateAppointment.value = date;
+    this.setState({ addMessageOpen: true });
+  }
+
+  AddAppointment(event) {
+    event.preventDefault();
+    let form = document.forms.formCreateAppointment;
+  }
+
   render() {
     let days = [];
     let cal = new Calendar.Calendar(1);
@@ -79,19 +101,36 @@ class Calendario extends Component {
     days.push(<ColumnBreak />);
     for (let i = 0; i < m.length; i++) {
       let daysTemp = m[i].map((day) =>
-        day !== 0 ? <Day day={day} /> : <NonDay />
+        day !== 0 ? (
+          <Day
+            day={day}
+            year={this.state.year}
+            month={this.state.month}
+            addAppointment={this.showAddAppointment}
+          />
+        ) : (
+          <NonDay />
+        )
       );
       daysTemp.push(<ColumnBreak />);
       days = days.concat(daysTemp);
     }
 
     this.state.days = days;
-
+    this.state.forms = document.forms;
     return (
       <div>
         <NavCalendar />
+        <AddModal
+          onSubmit={this.AddAppointment}
+          onHide={this.disposeAddAppointment}
+          isOpen={this.state.addMessageOpen}
+        />
         <div className="row calendar">
-          <p className="calendar-month m-auto">{this.state.months[this.state.month]}</p>
+          <p className="calendar-month m-auto">
+            {this.state.months[this.state.month]}{" "}
+            <span className="float-right mr-3">{this.state.year}</span>
+          </p>
           <div className="w-100"></div>
           <div className="back-arrow col-1" onClick={this.BackMonth}>
             <BackwardArrow />
