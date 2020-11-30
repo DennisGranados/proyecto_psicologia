@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import firebase from "firebase/app";
 import "firebase/auth";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import UserProfile from "./User";
+import { Link } from "react-router-dom";
 
 class NavLink extends Component {
   constructor() {

@@ -1,0 +1,50 @@
+{
+  "appointments": [
+    {
+      "idAppointment": {
+        "appointmentDate": DateTime,
+        "creationDate": DateTime,
+        "details": String,
+        "idApplicant": uid,
+        "idPsychologist": uid,
+        "isCancel": boolean,
+        "isConfirmed": boolean
+      }
+    }
+  ],
+  "users": [
+    {
+      "admin": [
+        {
+          "uidAdmin": {
+            "name": String
+          }
+        }
+      ],
+      "applicant": [
+        {
+          "uidApplicant": {
+            "career": String,
+            "gender": String,
+            "idStudent": String,
+            "name": String
+          }
+        }
+      ],
+      "qualifying": [
+        {
+          "career": [
+            {
+              "id": String
+            }
+          ],
+          "gender": [
+            {
+              "id": String
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

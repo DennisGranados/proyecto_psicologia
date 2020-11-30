@@ -1,9 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
 @font-face {
-  font-family: 'TruenoSBd';
-  src: url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.eot');
-  src: url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.eot?#iefix') format('embedded-opentype'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.woff2') format('woff2'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.woff') format('woff'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.ttf') format('truetype'), url('https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.svg#TruenoSBd') format('svg');
+  font-family: "TruenoSBd";
+  src: url("https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.eot");
+  src: url("https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.woff2")
+      format("woff2"),
+    url("https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.woff")
+      format("woff"),
+    url("https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.ttf")
+      format("truetype"),
+    url("https://medios.ucr.ac.cr/plantillas/ucr_4/fonts/TruenoSBd.svg#TruenoSBd")
+      format("svg");
   font-weight: 600;
   font-style: normal;
 }
@@ -17,22 +26,33 @@
   pointer-events: none;
 }
 
-
 .App-header {
-  background: #457fca;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #457fca; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #5691c8,
+    #457fca
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #5691c8,
+    #457fca
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 14vh;
   display: flex;
   align-items: center;
   padding: 0px 20px;
   color: black;
-  font-family: 'TruenoSBd';
+  font-family: "TruenoSBd";
 }
 
 .App-footer {
-  background: #457fca;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+  background: #457fca; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #5691c8,
+    #457fca
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #5691c8, #457fca);
   min-height: 18vh;
   display: flex;
@@ -45,7 +65,7 @@
 
 .App-body {
   background: #000;
-  font-family: 'Liberation Sans';
+  font-family: "Liberation Sans";
 }
 
 .Inputs {
@@ -63,20 +83,21 @@
 }
 
 .Titulos {
-  font-family: 'TruenoSBd';
+  font-family: "TruenoSBd";
   text-align: center;
+  font-size: 27px;
 }
 
 .Buttons {
-  background-color: #114E8F;
+  background-color: #114e8f;
   color: #ffffff;
   text-align: center;
   font-size: 16px;
 }
 
 .ButtonsFormat {
- text-align: center;
- margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .displayCSS {
@@ -102,7 +123,7 @@
 }
 
 .backgrounds {
-  background: #0973BB;
+  background: #0973bb;
 }
 
 .bg {
@@ -117,7 +138,7 @@
   margin-top: 2%;
 }
 
-.margins{
+.margins {
   margin-bottom: 2%;
   margin-top: 10px;
 }
@@ -131,9 +152,17 @@
 }
 
 .btnMenu {
-  background: #457fca;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  background: #457fca; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #5691c8,
+    #457fca
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #5691c8,
+    #457fca
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .calendar {
@@ -143,16 +172,18 @@
 
 .calendar-month {
   border-radius: 5px 5px 0 0;
-  background-color: #114E8F;
+  background-color: #114e8f;
   text-align: center;
   padding: 10px 0;
-  font-family: 'TruenoSBd';
+  font-family: "TruenoSBd";
   font-size: 1.2em;
   color: white;
   width: 78.4%;
 }
 
-.calendar-day, .calendar-title, .calendar-nonDay {
+.calendar-day,
+.calendar-title,
+.calendar-nonDay {
   display: inline-flex;
   padding: 10px 0px;
   margin: 5px;
@@ -160,16 +191,16 @@
   align-items: center;
   width: 13%;
   min-height: 40px;
-  font-family: 'TruenoSBd';
+  font-family: "TruenoSBd";
 }
 
 .calendar-day {
-  background-color: #CECECE;
+  background-color: #cecece;
 }
 
 .calendar-title {
-  background-color: #114E8F;
-  border-color: #114E8F;
+  background-color: #114e8f;
+  border-color: #114e8f;
   border-radius: 5px 0;
   color: white;
 }
@@ -184,7 +215,7 @@
   font-weight: bold;
   font-size: 20px;
   text-align: center;
-  background: #1787B3;
+  background: #1787b3;
 }
 
 .w-nav {
@@ -215,11 +246,13 @@
   transition-duration: 500ms;
 }
 
+.img-load-page {
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+}
 
-
-
-
-
-
-
-
+.spinner-load-page {
+  width: 3rem;
+  height: 3rem;
+}

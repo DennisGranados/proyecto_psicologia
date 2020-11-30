@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import FormularioLogin from "./FormularioLogin";
-import FormularioRegistro from "./FormularioRegistro";
+import FormLogin from "../Components/Forms/FormLogin";
+import FormRegister from "../Components/Forms/FormRegister";
 import Home from "./Home";
+import Footer from "../Components/Inc/Footer";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
-  useLocation,
 } from "react-router-dom";
-import Header from "./Header";
+import Header from "../Components/Inc/Header";
 import NavLink from "./NavLink";
-import Schedule from "./Schedule";
+import Schedule from "../Components/CalendarComponents/Schedule";
 import UserProfile from "./User";
 
 class Navegator extends Component {
@@ -122,16 +121,17 @@ class Navegator extends Component {
               <Home />
             </Route>
             <Route exact path="/login">
-              <FormularioLogin />
+              <FormLogin />
             </Route>
             <Route exact path="/registro">
-              <FormularioRegistro />
+              <FormRegister />
             </Route>
             <ApplicantRoute exact path="/schedule">
               <Schedule />
             </ApplicantRoute>
           </Switch>
         </Router>
+        <Footer />
       </div>
     );
   }

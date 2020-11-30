@@ -40,38 +40,19 @@ var UserProfile = (function () {
   };
 
   var getUser = function () {
-    let checkLoginStatusReactSide = async () => {
-      try {
-        let user = await UserProfile.checkAuthStatus();
-        console.log(user);
-        if (user !== null) {
-          return {
-            name: getName(),
-            career: getCareer(),
-            idStudent: getIdStudent(),
-            email: getEmail(),
-            status: getStatus(),
-            id: getSessionId(),
-          };
-        } else {
-          return null;
-        }
-      } catch (err) {
-        return null;
-      }
-    };
-    return checkLoginStatusReactSide();
+    if (firebase.auth().currentUser !== null) {
+      return {
+        name: getName(),
+        career: getCareer(),
+        idStudent: getIdStudent(),
+        email: getEmail(),
+        status: getStatus(),
+        id: getSessionId(),
+      };
+    } else {
+      return null;
+    }
   };
-
-  function checkAuthStatus() {
-    return new Promise((resolve, reject) => {
-      try {
-        firebase.auth().onAuthStateChanged((user) => resolve(user));
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
 
   var setStatus = function (id) {
     setCookie("status", id);
@@ -138,7 +119,6 @@ var UserProfile = (function () {
     generateSessionId: generateSessionId,
     getSessionId: getSessionId,
     deleteUser: deleteUser,
-    checkAuthStatus: checkAuthStatus,
   };
 })();
 

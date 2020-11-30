@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 
 class Home extends Component {
   render() {
@@ -10,7 +8,7 @@ class Home extends Component {
           <div className="col-4 card">
             <div className="card-header">
               <h2 className="Titulos">
-                <ins>Acerca del sitio</ins>
+                <p>Acerca del sitio</p>
               </h2>
             </div>
             <div className="card-body">
@@ -22,7 +20,6 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

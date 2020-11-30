@@ -1,11 +1,8 @@
-import "../App.css";
 import React, { Component } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 import firebase from "firebase/app";
 import "firebase/auth";
-import ModalReact from "./ModalMessage";
-import UserProfile from "./User";
+import ModalReact from "../Modals/ModalMessage";
+import UserProfile from "../User";
 
 class RegistroLogin extends Component {
   constructor() {
@@ -265,7 +262,6 @@ class RegistroLogin extends Component {
             </form>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

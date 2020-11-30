@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import "../App.css";
-import Footer from "./Footer";
 import firebase from "firebase/app";
 import "firebase/auth";
-import ModalReact from "./ModalMessage";
-import UserProfile from "./User";
-import { Redirect } from "react-router-dom";
+import ModalReact from "../Modals/ModalMessage";
+import UserProfile from "../User";
 
 class LoginForm extends Component {
   constructor() {
@@ -160,7 +157,6 @@ class LoginForm extends Component {
             </form>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

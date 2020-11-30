@@ -4,9 +4,9 @@ import ColumnBreak from "./ColumnBreak";
 import Calendar from "calendar";
 import ColumnTitle from "./ColumnTitle";
 import NonDay from "./NonDay";
-import FlechaAtras from "./FlechaAtras";
-import FlechaSiguiente from "./FlechaSiguiente";
-import NavegadorMenu from "./NavCalendario";
+import BackwardArrow from "./BackwardArrow";
+import ForwardArrow from "./ForwardArrow";
+import NavCalendar from "./NavCalendar";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -89,16 +89,16 @@ class Calendario extends Component {
 
     return (
       <div>
-        <NavegadorMenu />
+        <NavCalendar />
         <div className="row calendar">
           <p className="calendar-month m-auto">{this.state.months[this.state.month]}</p>
           <div className="w-100"></div>
           <div className="back-arrow col-1" onClick={this.BackMonth}>
-            <FlechaAtras />
+            <BackwardArrow />
           </div>
           <div className="col-10 text-align-center">{this.state.days}</div>
           <div className="forward-arrow col-1" onClick={this.ForwardMonth}>
-            <FlechaSiguiente />
+            <ForwardArrow />
           </div>
         </div>
       </div>
