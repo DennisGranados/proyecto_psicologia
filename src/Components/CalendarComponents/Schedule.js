@@ -9,8 +9,7 @@ import ForwardArrow from "./ForwardArrow";
 import NavCalendar from "./NavCalendar";
 import firebase from "firebase/app";
 import "firebase/auth";
-import Modal from "../Modals/ModalMessage";
-import AddModal from "../Modals/ModalAddAppointment";
+import AddAppointmentForm from "../AppointmentComponents/AddAppointmentForm";
 
 class Calendario extends Component {
   constructor(props) {
@@ -34,13 +33,13 @@ class Calendario extends Component {
         "Diciembre",
       ],
       addMessageOpen: false,
-      forms: null,
+      onAdd: false,
+      date: null,
     };
     this.BackMonth = this.BackMonth.bind(this);
     this.ForwardMonth = this.ForwardMonth.bind(this);
     this.disposeAddAppointment = this.disposeAddAppointment.bind(this);
     this.showAddAppointment = this.showAddAppointment.bind(this);
-    this.AddAppointment = this.AddAppointment.bind(this);
   }
 
   BackMonth() {
@@ -69,79 +68,88 @@ class Calendario extends Component {
     }
   }
 
+  PatchDays(day) {
+    if (day < 10) {
+      return "0" + day;
+    } else {
+      return day;
+    }
+  }
+
   disposeAddAppointment() {
-    this.setState({ addMessageOpen: false });
+    this.setState({ onAdd: false });
   }
 
-  showAddAppointment(date) {
-    let form = this.state.forms.formCreateAppointment;
-    form.dateAppointment.value = date;
-    this.setState({ addMessageOpen: true });
-  }
-
-  AddAppointment(event) {
-    event.preventDefault();
-    let form = document.forms.formCreateAppointment;
+  showAddAppointment(event) {
+    this.setState({ date: event.target.title, onAdd: true });
   }
 
   render() {
-    let days = [];
-    let cal = new Calendar.Calendar(1);
-    let m = cal.monthDays(this.state.year, this.state.month);
-    let nameDays = [
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado",
-      "Domingo",
-    ];
-    days = days.concat(nameDays.map((title) => <ColumnTitle title={title} />));
-    days.push(<ColumnBreak />);
-    for (let i = 0; i < m.length; i++) {
-      let daysTemp = m[i].map((day) =>
-        day !== 0 ? (
-          <Day
-            day={day}
-            year={this.state.year}
-            month={this.state.month}
-            addAppointment={this.showAddAppointment}
-          />
-        ) : (
-          <NonDay />
-        )
-      );
-      daysTemp.push(<ColumnBreak />);
-      days = days.concat(daysTemp);
-    }
-
-    this.state.days = days;
-    this.state.forms = document.forms;
-    return (
-      <div>
-        <NavCalendar />
-        <AddModal
-          onSubmit={this.AddAppointment}
-          onHide={this.disposeAddAppointment}
-          isOpen={this.state.addMessageOpen}
+    let content;
+    if (this.state.onAdd) {
+      content = (
+        <AddAppointmentForm
+          date={this.state.date}
+          disposeMethod={this.disposeAddAppointment}
         />
-        <div className="row calendar">
-          <p className="calendar-month m-auto">
-            {this.state.months[this.state.month]}{" "}
-            <span className="float-right mr-3">{this.state.year}</span>
-          </p>
-          <div className="w-100"></div>
-          <div className="back-arrow col-1" onClick={this.BackMonth}>
-            <BackwardArrow />
-          </div>
-          <div className="col-10 text-align-center">{this.state.days}</div>
-          <div className="forward-arrow col-1" onClick={this.ForwardMonth}>
-            <ForwardArrow />
+      );
+    } else {
+      let days = [];
+      let cal = new Calendar.Calendar(1);
+      let m = cal.monthDays(this.state.year, this.state.month);
+      let nameDays = [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+        "Domingo",
+      ];
+      days = days.concat(
+        nameDays.map((title) => <ColumnTitle title={title} />)
+      );
+      days.push(<ColumnBreak />);
+      for (let i = 0; i < m.length; i++) {
+        let daysTemp = m[i].map((day) =>
+          day !== 0 ? (
+            <Day
+              day={this.PatchDays(day)}
+              year={this.state.year}
+              month={this.state.month}
+              onClick={this.showAddAppointment}
+            />
+          ) : (
+            <NonDay />
+          )
+        );
+        daysTemp.push(<ColumnBreak />);
+        days = days.concat(daysTemp);
+      }
+
+      this.state.days = days;
+
+      content = (
+        <div>
+          {this.props.user.status === "A" ? <NavCalendar /> : ""}
+          <div className="row calendar">
+            <p className="calendar-month m-auto">
+              {this.state.months[this.state.month]}{" "}
+              <span className="float-right mr-3">{this.state.year}</span>
+            </p>
+            <div className="w-100"></div>
+            <div className="back-arrow col-1" onClick={this.BackMonth}>
+              <BackwardArrow />
+            </div>
+            <div className="col-10 text-align-center">{this.state.days}</div>
+            <div className="forward-arrow col-1" onClick={this.ForwardMonth}>
+              <ForwardArrow />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return <div>{content}</div>;
   }
 }
 

@@ -37,12 +37,12 @@ class NavLink extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link to="/schedule" className="nav-link" href="#">
-                  Calendario <span className="sr-only">(current)</span>
+                  Calendario
                 </Link>
               </li>
               <li className="nav-item active">
                 <Link className="nav-link" href="#">
-                  Estadisticas <span className="sr-only">(current)</span>
+                  Estadisticas
                 </Link>
               </li>
             </ul>
@@ -70,12 +70,12 @@ class NavLink extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link to="/schedule" className="nav-link" href="#">
-                  Calendario <span className="sr-only">(current)</span>
+                  Calendario
                 </Link>
               </li>
               <li className="nav-item active">
-                <Link className="nav-link" href="#">
-                  Mis solicitudes <span className="sr-only">(current)</span>
+                <Link to="/myAppointments" className="nav-link" href="#">
+                  Mis solicitudes
                 </Link>
               </li>
             </ul>

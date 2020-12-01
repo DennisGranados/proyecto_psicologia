@@ -13,8 +13,13 @@ import Header from "../Components/Inc/Header";
 import NavLink from "./NavLink";
 import Schedule from "../Components/CalendarComponents/Schedule";
 import UserProfile from "./User";
+import MyAppointments from "./AppointmentComponents/MyAppointments";
 
 class Navegator extends Component {
+  constructor() {
+    super();
+  }
+
   render() {
     function verifyAdmin(user) {
       if (user === null) {
@@ -109,11 +114,7 @@ class Navegator extends Component {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <NavLink
-                user={this.props.user}
-                //onChangeUser={this.props.onChangeUser}
-                onLogout={this.props.onLogout}
-              />
+              <NavLink user={this.props.user} onLogout={this.props.onLogout} />
             </div>
           </nav>
           <Switch>
@@ -127,7 +128,10 @@ class Navegator extends Component {
               <FormRegister />
             </Route>
             <ApplicantRoute exact path="/schedule">
-              <Schedule />
+              <Schedule user={this.props.user} />
+            </ApplicantRoute>
+            <ApplicantRoute exact path="/myAppointments">
+              <MyAppointments user={this.props.user} />
             </ApplicantRoute>
           </Switch>
         </Router>

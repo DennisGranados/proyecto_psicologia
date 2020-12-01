@@ -4,18 +4,18 @@ class Dia extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: this.props.year + "-" + this.props.month + "-" + this.props.day,
+      date:
+        this.props.year + "-" + (this.props.month + 1) + "-" + this.props.day,
     };
-    this.ShowAddAppointment = this.ShowAddAppointment.bind(this);
-  }
-
-  ShowAddAppointment() {
-    this.props.addAppointment(this.state.date);
   }
 
   render() {
     return (
-      <div className="calendar-day" onClick={this.ShowAddAppointment}>
+      <div
+        className="calendar-day"
+        onClick={this.props.onClick}
+        title={this.state.date}
+      >
         {this.props.day}
       </div>
     );

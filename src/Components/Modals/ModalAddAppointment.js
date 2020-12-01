@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-class ModalAddAppointment extends Component {
-  state = {};
-  render() {
-    return (
-      <Modal show={this.props.isOpen} onHide={this.props.onHide}>
+const ModalAddAppointment = React.forwardRef((props, ref) => (
+    <Modal show={props.isOpen} onHide={props.onHide}>
         <Modal.Header closeButton className="headerModal">
           <Modal.Title className="headerModal">Añadir cita</Modal.Title>
         </Modal.Header>
@@ -14,7 +11,8 @@ class ModalAddAppointment extends Component {
           <form
             id="form-create-appointment"
             name="formCreateAppointment"
-            onSubmit={this.props.onSubmit}
+            onSubmit={props.onSubmit}
+            ref={ref}
           >
             <div className="form-group">
               <label for="date">Fecha de cita</label>
@@ -24,7 +22,7 @@ class ModalAddAppointment extends Component {
                 className="form-control"
                 id="date-appointment"
                 disabled
-                value={this.props.date}
+                value={props.date}
               />
             </div>
             <div className="form-group">
@@ -54,7 +52,7 @@ class ModalAddAppointment extends Component {
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={this.props.onHide}
+            onClick={props.onHide}
             className="Buttons"
           >
             Cancelar
@@ -69,8 +67,7 @@ class ModalAddAppointment extends Component {
           </Button>
         </Modal.Footer>
       </Modal>
-    );
-  }
-}
+  ));
+
 
 export default ModalAddAppointment;
