@@ -56,7 +56,6 @@ class LoginForm extends Component {
                   UserProfile.setName(u.name);
                   UserProfile.setEmail(user.user.email);
                   UserProfile.setStatus("A");
-                 // context.props.onChangeUser(UserProfile.getUser());
                   window.location.href = "/schedule";
                 } else {
                   firebase
@@ -72,7 +71,6 @@ class LoginForm extends Component {
                         UserProfile.setIdStudent(u.idStudent);
                         UserProfile.setEmail(user.user.email);
                         UserProfile.setStatus("B");
-                      //  context.props.onChangeUser(UserProfile.getUser());
                         window.location.href = "/schedule";
                       } else {
                         context.showMessage(

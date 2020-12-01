@@ -10,7 +10,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = { user: null, isLoading: true };
-    // this.onChangeUser = this.onChangeUser.bind(this);
     this.onLogout = this.onLogout.bind(this);
     this.checkAuthStatus = this.checkAuthStatus.bind(this);
     let context = this;
@@ -21,16 +20,11 @@ class App extends Component {
           .then(function (user) {
             if (user !== null) {
               context.setState({ user: UserProfile.getUser() });
-              console.log(user);
-            } else {
-              console.log(user);
-            }
+            } 
             context.setState({ isLoading: false });
           })
           .catch(function (err) {
-            console.log(err);
           });
-        console.log(user);
       } catch (err) {
         return null;
       }
